@@ -47,7 +47,7 @@ mkdir -p $AIRFLOW_HOME
 echo "Creating Airflow configuration file..."
 cat <<EOF > $AIRFLOW_HOME/airflow.cfg
 [core]
-dags_folder = $AIRFLOW_HOME/dags
+dags_folder = ~/DATA_TOOL/dags
 base_log_folder = $AIRFLOW_HOME/logs
 executor = SequentialExecutor
 sql_alchemy_conn = sqlite:///$AIRFLOW_HOME/airflow.db
