@@ -40,7 +40,7 @@ airflow users create --username admin --password admin --firstname Admin --lastn
 
 # Setup Airflow home and environment variables
 echo "Setting up Airflow environment variables..."
-export AIRFLOW_HOME=~/airflow
+export AIRFLOW_HOME=~/DATA_TOOL/airflow
 mkdir -p $AIRFLOW_HOME
 
 # Create a basic Airflow configuration file
