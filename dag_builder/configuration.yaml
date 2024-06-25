@@ -1,0 +1,14 @@
+frequency: "Daily"
+start_date_year: 1,
+start_month_year: 1,
+start_day_year: 1,
+retries: 1,
+retry_delay: timedelta(minutes=5),
+schedule_interval: '@daily',
+
+dbt_project: "/path/to/dbt/project"
+python_scripts:
+  - "/path/to/script1.py"
+  - "/path/to/script2.py"
+requirements_file: "requirements.txt"
+code_env_name: "data_tool_env"
