@@ -65,3 +65,5 @@ echo "airflow webserver --port 8080"
 echo "To start the Airflow scheduler, run the following command in a new terminal:"
 echo "source airflow_venv/bin/activate"
 echo "airflow scheduler"
+mkdir $AIRFLOW_HOME/dags
+mkdir $AIRFLOW_HOME/logs
