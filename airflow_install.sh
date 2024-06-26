@@ -47,7 +47,7 @@ mkdir -p $AIRFLOW_HOME
 echo "Creating Airflow configuration file..."
 cat <<EOF > $AIRFLOW_HOME/airflow.cfg
 [core]
-dags_folder = ~/DATA_TOOL/dags
+dags_folder = $AIRFLOW_HOME/dags
 base_log_folder = $AIRFLOW_HOME/logs
 executor = SequentialExecutor
 sql_alchemy_conn = sqlite:///$AIRFLOW_HOME/airflow.db
@@ -66,5 +66,5 @@ echo "airflow webserver --port 8080"
 echo "To start the Airflow scheduler, run the following command in a new terminal:"
 echo "source airflow_venv/bin/activate"
 echo "airflow scheduler"
-mkdir ~/DATA_TOOL/dags
+mkdir $AIRFLOW_HOME/dags
 mkdir $AIRFLOW_HOME/logs

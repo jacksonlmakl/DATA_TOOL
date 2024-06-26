@@ -67,7 +67,7 @@ if len(python_scripts)>0:
     for i, script in enumerate(python_scripts):
         python_task = BashOperator(
             task_id=f'run_python_script_{i+1}',
-            bash_command=f"source ~/DATA_TOOL/airflow_venv/bin/activate && python ~/DATA_TOOL/dags/{name_}/python/{script}",
+            bash_command=f"source ~/DATA_TOOL/airflow_venv/bin/activate && python ~/DATA_TOOL/airflow/dags/{name_}/python/{script}",
             dag=dag,
         )
         prev_task >> python_task
