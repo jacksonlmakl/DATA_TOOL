@@ -13,4 +13,3 @@ python_scripts:
   - "script1.py"
   - "script2.py"
 requirements_file: "requirements.txt"
-code_env_name: "dag_venv"
