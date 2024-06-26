@@ -4,7 +4,8 @@ from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.bash_operator import BashOperator
 
-name_ = 'test'
+name_ = '*<PLACEHOLDER_NAME_HERE>&'
+
 
 # Load configuration from YAML file
 with open(f"{name_}_configuration.yaml", "r") as file:
