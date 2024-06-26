@@ -1,4 +1,4 @@
-name: NEW_DAG
+name: "*<PLACEHOLDER_NAME_HERE>&"
 
 frequency: "Daily"
 start_date_year: 1
