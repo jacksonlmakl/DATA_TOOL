@@ -53,6 +53,7 @@ executor = SequentialExecutor
 sql_alchemy_conn = sqlite:///$AIRFLOW_HOME/airflow.db
 [webserver]
 web_server_port = 8080
+expose_config = True
 EOF
 
 echo "Airflow setup completed successfully!"
