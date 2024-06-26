@@ -4,8 +4,10 @@ from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.bash_operator import BashOperator
 
+name_ = os.getenv('NAME')
+
 # Load configuration from YAML file
-with open("configuration.yaml", "r") as file:
+with open(f"{name_}_configuration.yaml", "r") as file:
     config = yaml.safe_load(file)
 
 # Parse configuration
@@ -19,7 +21,7 @@ schedule_interval = config['schedule_interval']
 dbt_project = config['dbt_project']
 python_scripts = config['python_scripts']
 requirements_file = config['requirements_file']
-code_env_name = config['code_env_name']
+code_env_name = config['name']
 dag_name = config['name']
 
 # Create Airflow DAG
@@ -40,16 +42,18 @@ dag = DAG(
     schedule_interval=schedule_interval,
 )
 
-# Task to create virtual environment
-create_env_cmd = f"python3 -m venv {code_env_name} && source {code_env_name}/bin/activate && pip install -r {requirements_file}"
-create_env = BashOperator(
-    task_id='create_virtualenv',
-    bash_command=create_env_cmd,
-    dag=dag,
-)
+# # Task to create virtual environment
+# create_env_cmd = f"python3 -m venv {name_} && source ~/DATA_TOOL/dags/{name_}/{name_}/bin/activate && pip install -r {requirements_file}"
+# create_env = BashOperator(
+#     task_id='create_virtualenv',
+#     bash_command=create_env_cmd,
+#     dag=dag,
+# )
 
 # Task to run dbt project
-run_dbt_cmd = f"cd {dbt_project} && dbt run"
+# run_dbt_cmd = f"cd {dbt_project} && dbt run"
+run_dbt_cmd = f"cd "
+
 run_dbt = BashOperator(
     task_id='run_dbt',
     bash_command=run_dbt_cmd,
@@ -57,17 +61,16 @@ run_dbt = BashOperator(
 )
 
 # Dynamically create Python tasks
-prev_task = create_env
+prev_task = run_dbt
 for i, script in enumerate(python_scripts):
     python_task = BashOperator(
         task_id=f'run_python_script_{i+1}',
-        bash_command=f"{code_env_name}/bin/python {script}",
+        bash_command=f"~/DATA_TOOL/dags/{name_}/{name_}/bin/python {script}",
         dag=dag,
     )
     prev_task >> python_task
     prev_task = python_task
 
 # Set task dependencies
-create_env >> run_dbt
 run_dbt >> python_task
 
