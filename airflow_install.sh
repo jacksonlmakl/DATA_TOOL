@@ -22,10 +22,10 @@ source airflow_venv/bin/activate || error_exit "Failed to activate the virtual e
 # Upgrade pip
 echo "Upgrading pip..."
 pip install --upgrade pip || error_exit "Failed to upgrade pip"
-pip install apache-airflow
+pip install apache-airflow>=2.7.0
 # Install Apache Airflow
 echo "Installing Apache Airflow..."
-export AIRFLOW_VERSION=2.6.2
+export AIRFLOW_VERSION=2.7.0
 export PYTHON_VERSION="$(python --version | cut -d " " -f 2 | cut -d "." -f 1-2)"
 export CONSTRAINT_URL="https://raw.githubusercontent.com/apache/airflow/constraints-${AIRFLOW_VERSION}/constraints-${PYTHON_VERSION}.txt"
 pip install "apache-airflow==${AIRFLOW_VERSION}" --constraint "${CONSTRAINT_URL}" || error_exit "Failed to install Apache Airflow"
