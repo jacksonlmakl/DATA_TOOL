@@ -10,9 +10,10 @@ with open("configuration.yaml", "r") as file:
 
 # Parse configuration
 frequency = config['frequency']
+print("LOOK",(config['start_date_year'], config['start_month_year'], config['start_day_year']))
 start_date = datetime(config['start_date_year'], config['start_month_year'], config['start_day_year'])
 retries = config['retries']
-retry_delay = timedelta(minutes=config['retry_delay'])
+retry_delay = timedelta(minutes=(config['retry_delay']))
 schedule_interval = config['schedule_interval']
 
 dbt_project = config['dbt_project']

@@ -22,7 +22,7 @@ source airflow_venv/bin/activate || error_exit "Failed to activate the virtual e
 # Upgrade pip
 echo "Upgrading pip..."
 pip install --upgrade pip || error_exit "Failed to upgrade pip"
-
+pip install apache-airflow
 # Install Apache Airflow
 echo "Installing Apache Airflow..."
 export AIRFLOW_VERSION=2.6.2
