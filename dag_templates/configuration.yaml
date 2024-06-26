@@ -10,7 +10,7 @@ schedule_interval: '@daily'
 
 dbt_project: "dbt/project"
 python_scripts:
-  - "python/script1.py"
-  - "python/script2.py"
+  - "script1.py"
+  - "script2.py"
 requirements_file: "requirements.txt"
 code_env_name: "dag_venv"
