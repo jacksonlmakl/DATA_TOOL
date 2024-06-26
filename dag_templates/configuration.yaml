@@ -10,6 +10,6 @@ schedule_interval: '@daily'
 
 dbt_project: "dbt/project"
 python_scripts:
-  - "script1.py"
-  - "script2.py"
+  # - "script1.py"
+  # - "script2.py"
 requirements_file: "requirements.txt"
